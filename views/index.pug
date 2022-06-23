@@ -1,0 +1,47 @@
+doctype html
+html
+   head
+      title #{title}
+      link(rel="stylesheet",href="/style.css")
+   body
+      nav.navbar.navbar-expand-lg.navbar-dark.bg-danger 
+         .container 
+               a.navbar-brand phonebook
+
+      .container.mt-5 
+         .row
+               .col-3 
+                  form(action="/",method="post")
+                     .mb-3
+                           label(for="name") Name
+                           input(type="text",name="name",id="name",placeholder="Enter your name").form-control
+                     .mb-3
+                           label(for="contact") Contact 
+                           input(type="text",name="contact",id="contact",placeholder="Enter your contact").form-control
+                     .mb-3
+                           label(for="email") Email 
+                           input(type="text",name="email",id="email",placeholder="Enter your Email").form-control
+                     .mb-3
+                           label(for="address") Address 
+                           input(type="text",name="address",id="address",placeholder="Enter your address").form-control
+                     .mb-3 
+                           input(type="submit",value="Create").btn.btn-success
+               .col-9 
+                  p.text-prmary 
+                  table.table
+                     tr  
+                           
+                           th Name
+                           th Phone 
+                           th Email 
+                           th Address
+                           th Action
+                     each pro in result 
+                           tr
+                              td #{pro.name}
+                              td #{pro.contact}
+                              td #{pro.email}
+                              td #{pro.address}
+                              td
+                                 a(href="/delete/" + pro._id).btn.btn-danger Delete
+                                 //- a(href="/update/" + pro.id).btn.btn-success.ms-4 edit
