@@ -2,7 +2,11 @@ var express = require("express")
 var app=express();
 var cookiesparser =require("cookie-parser")
 var session = require("express-session")
+var cors = require('cors') 
 
+
+
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
 
@@ -19,6 +23,6 @@ app.set('views','./views');
 //router
 var router = require('./route');
 app.use(router);
-  app.listen(3000, () => {
-    console.log(`App listening at http://localhost:3000`)
+  app.listen(5000, () => {
+    console.log(`App listening at http://localhost:5000`)
   })
